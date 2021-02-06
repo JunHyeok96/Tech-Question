@@ -42,7 +42,7 @@ JVM의 메모리 구조는 메서드(클래스/static) 영역, 힙 영역, 스�
 Minor GC는 Young Gerneration영역에서 일어나는 GC입니다. Young Gerneration영역은 eden, survivor영역을 말합니다.
 1.	최초에 객체는 eden영역에 생성됩니다. eden영역이 가득차면 첫 번째 GC가 발생합니다. 참조되고 있지 않은 객체는 제거하고, 참조되고있는 객체는 survivor1영역에 eden영역의 메모리를 그대로 복사합니다.
 2.	eden영역이 다시 가득차면 eden영역에 객체와 survivor1영역에 생성된 객체중 참조되고있는 객체가 있는지 검사합니다. 참조되지 않는 객체는 제거하고 참조되는 객체는 survivor2영역에 복사함. 
-3. survivor1과 survivor2로 객체의 이동을 반복하면서 살아있는 객체는 Age bit에 살아남은 횟수가 기록되고 age bit가 threshold값 이상이 되거나 survivor영역의 메모리가 부족해지면 old영역으로 이동합니다. 
+3. survivor1과 survivor2로 객체의 이동을 반복하면서 살아있는 객체는 Age bit에 살아남은 횟수를 기록하고 age bit가 threshold값 이상이 되거나 survivor영역의 메모리가 부족해지면 old영역으로 이동합니다. 
 survivor1과 survivor2를 이동하는 이유는 메모리 단편화를 피하기 위해서입니다. 이처럼 JVM에서 한 곳에 객체를 모으는 방식을 Compaction 이라고 합니다. 
 
 Major GC는 Full GC로 Old 영역에서 일어나는 GC이다.
