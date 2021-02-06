@@ -50,16 +50,16 @@ Major GC는 Full GC로 Old 영역에서 일어나는 GC이다.
 2.	참조되지 않는 객체들을 모아 한번에 제거한다. Minor GC에 비해 시간이 오래걸리고 작업중 GC스레드를 제외한 모든 스레드가 중단된다.
 </br></br>
 
-#### Q. JAVA언어의 장단점  
-JVM에서 동작하므로 특정 운영체제에 종속되지않습니다. 
-객체 지향언어로서 캡슐화, 상속, 다형성등을 지원합니다.
-Garbage Collector에 의해 사용하지 않는 메모리를 자동으로 수거합니다.
-멀티 스레딩이 가능합니다.
+#### Q. JAVA언어의 장단점    
+JVM에서 동작하므로 특정 운영체제에 종속되지않습니다.    
+객체 지향언어로서 캡슐화, 상속, 다형성등을 지원합니다.   
+Garbage Collector에 의해 사용하지 않는 메모리를 자동으로 수거합니다.   
+멀티 스레딩이 가능합니다.    
 </br></br>
 
-#### Q. JAVA의 접근 제어자   
-Public : 어떤 클래스의 객체에서든 접근 가능
-Private : 해당 클래스에서만 접근가능
-Protected : 같은 package + 상속 받은 하위 클래스에서 사용가능
-Package private : 같은 package에서만 접근 가능
+#### Q. JAVA의 접근 제어자      
+Public : 어떤 클래스의 객체에서든 접근 가능  
+Private : 해당 클래스에서만 접근가능   
+Protected : 같은 package + 상속 받은 하위 클래스에서 사용가능  
+Package private : 같은 package에서만 접근 가능  
 </br></br>
