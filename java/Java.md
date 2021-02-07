@@ -104,14 +104,34 @@ call by value는 함수의 전달 인자로 값을 복사해서 넘기고, call 
 checked exception은 컴파일 단계에서 확인되는 예외로서 IOException, SQLException등이 포함되고 코드상으로 예외처리를 작성해야합니다. 또한, 예외 발생시 트랜잭션이 rollback되지않습니다. unchecked exception은 런타임시 확인되는 예외로서 RuntimeException을 상속 받습니다. NullPointerException, IllegalArgumentException등이 포함됩니다. 코드상에서 명시적으로 예외를 처리하지 않아도 실행가능하고 예외 발생시 트랜잭션시 rollback됩니다.
 </br></br>
 
-#### Q. JAVA의 ArrayList, LinkedList, Vector를 설명해주세요.
+#### Q. JAVA의 ArrayList, LinkedList차이를 설명해주세요.
 ArrayList는 배열 기반 리스트입니다. 자료 구조의 특성상 배열은 random access로 데이터를 접근하여 조회의 시간 복잡도는 O(1)이지만, 데이터를 삭제하고 추가하는데 배열의 크기를 조정하고 원소를 복사합니다. 그런 이유로 삭제와 수정에 대한 시간 복잡도는 O(N)입니다.  
 
 LinkedList는 연결리스트 기반의 리스트입니다. 자료 구조의 특성상 연결되어있는 노드의 조회는 빠르지만 특정 순서의 노드를 조회하기위해서는 순차 탐색을 진행해야합니다. 따라서 조회의 시간 복잡도는 O(N)입니다. 삽입과 삭제의 경우 해당 노드의 포인터 값만 변경해주면 되기 때문에 시간 복잡도는 O(1)입니다.  
 
 Vector는 ArrayList와 유사합니다. 차이점은 Vector는 구현 코드를 확인하면 synchronized가 메서드에 적용되어 thread safe하다는 특징이있습니다.   
 
-어떤 연산을 하는지에 따라 위의 리스트중 효율적인 것을 택해야합니다. 조회가 빈번하다면 ArrayList가 효율적이고, 데이터의 삽입, 삭제 작업이 빈번하면 LinkedList, thread safe가 보장되어야 한다면 Vector를 선택하는 것이 좋습니다.
+어떤 연산을 하는지에 따라 위의 리스트중 효율적인 것을 택해야합니다. 조회가 빈번하다면 ArrayList가 효율적이고, 데이터의 삽입, 삭제 작업이 빈번하면 LinkedList가 성능상 좋다.
+</br></br>
 
+#### Q. Java의 HashSet, LinkedHashSet, TreeSet을 비교해주세요.  
+HashSet은 객체를 저장하기 전에 hashcode()메서드를 호출하여 얻어낸 hash값으로 기존에 저장된 객체의 hashcode와 비교합니다. 만약 동일한 hashcode를 가진 객체가 있다면 equals()로 비교합니다. 두 객체가 다르다면 LinkedList형태로 데이터를 추가합니다. HashSet은 삽입 순서를 유지하지 않고 최대 한 개의 Null을 허용합니다. 삽입/삭제/contains의 복잡도는 O(1)입니다.  
 
+LinkedHashSet은 HashSet과 다르게 데이터의 저장 순서를 유지합니다. 순서 유지를 위해 포인터 값을 저장하므로 HashSet에 비해 약간 느린 성능을 보입니다. 삽입/삭제/contains의 복잡도는 O(1)입니다.    
 
+TreeSet은 특정 조건에 맞춰 데이터를 정렬하여 저장합니다. 내부적으로 Red-Black Tree를 사용합니다. 삽입과 삭제 과정에서 재정렬이 이뤄지기때문에 시간 복잡도는 O(logN)이며 조회시에도 트리를 탐색해야하므로 O(logN)의 시간이 걸립니다. Null값은 허용되지 않습니다.  
+
+어떤 연산을 하는 지에 따라 위의 Set중 효율적인 것을 택해야합니다. 저장 순서가 유지되야하면 LinkedHashSet, 정렬되어야 한다면 TreeSet, 이외에는 HashSet을 사용하는 것이 성능상 좋습니다.
+ </br></br>
+
+#### Q. Java의 HashTable, HashMap, LinkedHashMap, TreeMap을 비교해주세요.
+HashTable은 Key, Value형태로 데이터를 저장할 수 있는 구조로서 Thread safe이 보장됩니다. 삽입 순서가 유지되지 않고 동기화로 인해 HashMap보다는 느립니다. Key 값으로 Null을 허용하지 않습니다. 조회/삭제/삽입의 시간 복잡도는 O(1)입니다.  
+
+HashMap은 thread safe하지 않고 삽입 순서도 보장되지 않습니다. Key값으로 최대 한 개의 Null값을 허용합니다. 조회/삭제/삽입의 시간 복잡도는 O(1)입니다
+
+LinkedHashMap은 삽입 순서를 유지합니다. 순서 유지를 위해 포인터 값을 저장하므로 HashMap에 비해 약간 느린 성능을 보입니다. 조회/삭제/삽입의 시간 복잡도는 O(1)입니다
+
+TreeMap은 특정 조건에 맞춰 데이터를 정렬하여 저장합니다. 내부적으로는 이진 트리를 사용하며 삽입, 삭제시 트리를 정렬해야하므로 시간 복잡도는 O(logN)이며 조회시에도 트리를 탐색해야하므로 O(logN)의 시간이 걸립니다. Null값은 허용되지 않습니다.     
+
+어떤 연산을 하는 지에 따라 위의 Map중 효율적인 것을 택해야합니다. Thread Safe가 필요한 경우 HashTable, 삽입 순서가 유지되야한다면 LinkedHashMap, 정렬 순서가 유지되어야한다면 TreeMap, 이외에는 HashMap을 사용하는 것이 성능상 좋습니다.  
+</br></br>
