@@ -133,5 +133,5 @@ LinkedHashMap은 삽입 순서를 유지합니다. 순서 유지를 위해 포�
 
 TreeMap은 특정 조건에 맞춰 데이터를 정렬하여 저장합니다. 내부적으로는 이진 트리를 사용하며 삽입, 삭제시 트리를 정렬해야하므로 시간 복잡도는 O(logN)이며 조회시에도 트리를 탐색해야하므로 O(logN)의 시간이 걸립니다. Null값은 허용되지 않습니다.     
 
-어떤 연산을 하는 지에 따라 위의 Map중 효율적인 것을 택해야합니다. Thread Safe가 필요한 경우 HashTable, 삽입 순서가 유지되야한다면 LinkedHashMap, 정렬 순서가 유지되어야한다면 TreeMap, 이외에는 HashMap을 사용하는 것이 성능상 좋습니다.  
+어떤 연산을 하는 지에 따라 위의 Map중 효율적인 것을 택해야합니다. Thread Safe가 필요한 경우 HashTable, 삽입 순서가 유지되야한다면 LinkedHashMap, 정렬 순서가 유지되어야한다면 TreeMap, 이외에는 HashMap을 사용하는 것이 성능상 좋습니다. Thread Safe이 필요한 상황에서라면 사실 ConcurrentHashMap도 존재한다. HashTable이 메서드 단위로 동기화를 건다면 ConcurrentHashMap은 블록 단위로 동기화를 걸어 성능상 더 뛰어나다.
 </br></br>
