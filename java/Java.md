@@ -60,10 +60,10 @@ checked exception은 예외 처리가 없다면 실행할 수 없습니다.
 </br></br>
 
 #### Q. JAVA의 접근 제어자에 대해 설명해주세요.
-Private : 해당 클래스에서만 접근가능이 가능합니다.   
-Package private : 같은 package에서만 접근 가능합니다.
-Protected : 같은 package와 상속 받은 하위 클래스에서 접근 가능합니다. 
-Public : 모든 클래스에서 접근이 가능합니다.  
+Private : 해당 클래스에서만 접근가능이 가능합니다.     
+Package private : 같은 package에서만 접근 가능합니다.  
+Protected : 같은 package와 상속 받은 하위 클래스에서 접근 가능합니다.   
+Public : 모든 클래스에서 접근이 가능합니다.    
 </br></br>
 
 
