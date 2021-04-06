@@ -119,3 +119,57 @@ JSON으로 변환과정에서 팀의 엔티티까지 변환시키려고 할 것�
 프록시 객체에 값을 얻기위해 호출하면 엔티티 정보를 얻어오기위한 DB조회를 조회해 엔티티를 가져옵니다. 이를 프록시 초기화라고합니다. DB조회로 영속성 컨텍스트에 저장된 엔티티를 
 프록시 객체가 참조하면서 값을 반환합니다. 이런 원리로 지연 로딩이 가능합니다.
 </details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> 조회작업에서 @Transaction(read=true)를 사용하면 왜 성능이 빨리지나요?</strong></summary></br>
+
+JPA에서는 read=true 속성이 설정되면 영속성 컨텍스트 flush가 발생하지 않습니다. Flush는 영속성 컨텐스트의 변경내용을 데이터 베이스와 동기화하는 작업을 말합니다.
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> IoC, DI는 무엇인가요?</strong></summary></br>
+
+DI는 의존성 주입으로 객체를 외부에서 주입하는 방식을 말합니다. 외부에서 객체를 주입 받게되면객체 내부에서 객체를 생성하는 방식보다 유지 보수가 좋습니다. 의존하는 객체가 변경될 시 코드마다 일일히 찾아 수정하지 않아도 외부에서 주입하는 객체만 수정하면됩니다. 스프링의 컨테이너는 사용자가 직접 의존성 주입을 하는 대신 스프링 컨테이너에서 DI를해준다. 이를 제어가 역전되었다고해서 IOC라고 표현합니다.
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Bean은 무엇인가요?</strong></summary></br>
+
+Spring 컨테이너에서 관리되는 객체를 말합니다. Bean은 xml파일이나 자바 configuration으로 선언할 수 있습니다. 일반적으로 Bean은 singleton으로 관리되며 Prototype으로 지정시 객체 호출시 매번 새롭게 생성됩니다.
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong>프록시 패턴은 무엇인가요?</strong></summary></br>
+
+프록시 패턴은 클라이언트의 요청을 프록시 객체로 대신 받아주는 방식입니다.
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong>스프링 AOP는 무엇인가요?</strong></summary></br>
+
+OOP의 경우 비즈니스 로직의 모듈화가 핵심이라면 AOP는 인프라, 시스템 관련 부가기능등을 모듈화하여 공통된 기능을 처리하는 방식입니다. AOP가 적용된 대표적인 예시는 @Transactional, @Cacheable이 있습니다.
+
+**Target** : 부가기능을 부여할 대상  
+**Aspect** : 관심사를 모듈화 한 것으로 어드바이스와 포인트 컷을 함께 갖고있습니다.  
+**Advice** : 실질적으로 부가기능을 담은 구현체  
+**JoinPoint** : 어드바이스가 적용될 위치입니다. 스프링에서는 메소드 조인포인트만 제공합니다.
+**Point cut** : 부가기능이 적용될 대상을 선정하는 방법  
+**Proxy** : 타겟을 감싸서 타겟의 요청을 대신 받아주는 랩핑 오브젝트.   
+**Weaving** : 지정된 객체에 aspect를 적용해서 새로운 프록시 객체를 생성하는 과정  
+
+스프링 AOP는 프록시 패턴 기반으로 합니다. 프록시 패턴은 대신 해준다는 개념으로 이해하면된다. 실제 aop가 적용된 객체의 클래스를 확인해보면 proxy가 붙은 객체로 사용됩니다.  
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong>스프링 AOP는 어떻게 동작하나요?</strong></summary></br>
+
+스프링 aop는 프록시 패턴의 런타임 위빙 방식을 사용합니다.
+스프링 aop는 JDK Dynamic Proxy, CGLIB 두 가지를 사용합니다. 
+**JDK Dynamic Proxy** : Proxy Factory에게 타겟의 인터페이스 정보를 넘겨주면 타겟의 인터페이스를 상속한 Proxy 객체를 생성한다. Proxy 객체에서 invocationHandler를 구현하면되는데,  invoke 메서드를 오버라이딩하면서 부가기능을 구현할 수 있습니다. JDK Dynamic Proxy방식은 Java reflection을 사용해 target class의 method를 invoke하며, Advise대상이든 아니든 모든 method call마다 reflection invoke를 실시하므로 성능이 떨어집니다. JDK Dynamic Proxy방식은 interface가 반드시 필요합니다.
+
+**CGLIB** :  CGLIB는 Enhancer라는 클래스를 바탕으로 프록시를 생성합니다. CGLIB Proxy는 Target Class를 상속받아 생성된다. CGLIB방식은 Interface가 필요하지 않습니다. 하지만 상속을 이용하는 만큼, final, private와 같이 overriding이 불가능한경우 사용할 수 없다. @Transactional, @Cacheable같은 어노테이션을 사용할 때 private이 안되는 이유가 이것 때문이다. methodInterceptor를 구현하면되는데, intercept 메서드를 오버라이딩하면서 부가기능을 구현한다. CGLIB방식은 메서드가 최초 호출될 때만 동적으로 Bytecode를 생성하고 다음 호출부터는 재사용하기 때문에 속도가 더 빠르다.
+
+Spring에서 타겟 클래스의 인터페이스 구현 여부에 따라 방식이 달라집니다. Spring boot는 이와 상관없이 CGLIB방식이 default입니다.
+</details></br>
+
+
