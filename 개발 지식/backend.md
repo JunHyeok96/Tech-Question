@@ -3,13 +3,32 @@
 ## 웹 개발 지식
 
 <details>
-    <summary style="font-size : 20px;"><strong> Q. 웹 서버와 WAS는 어떤 차이가 있나요?</strong></summary></br>
-  
+    <summary style="font-size : 20px;"><strong> Q. 웹 서버와 WAS는 어떤 차이가 있나요?</strong></summary></br> 
+
+웹 서버는 정적인 컨텐츠를 처리하며 WAS에 요청을 전달하고 WAS로부터 응답을 클라이언트에게 전달하는 역할을 수행합니다. ex)nginx, apache   
+
+WAS는 웹 서버와 웹 컨테이너가 합쳐진 것으로 비즈니스 로직을 처리하여 동적인 컨텐츠를 제공할 수 있습니다. ex)tomcat, jetty, jboss    
+
+웹 서버와 WAS를 구분하므로서 얻는 장점으로 웹 서버에서 정적인 컨텐츠를 담당하여 WAS에 대한 부하를 줄여줄 수 있으며 WAS에 요청을 전달할 때 로드밸런싱을 수행할 수 있습니다.
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. forward proxy와 reverse proxy는 무엇인가요?</strong></summary></br> 
+
+forward proxy는 클라이언트가 인터넷에 직접 접근하는 것이 아니라 forward proxy 서버에서 요청을 받아 서버와 연결하고 결과를 응답하는 방식입니다.   
+
+reverse proxy는 서버대신 proxy에서 요청을 받아 서버에게 요청을 전달해줍니다. 로드 밸런싱에 활용할 수 있고 서버를 노출하지않으므로서 보안상 이점이 있습니다.   
+
+이 둘의 차이점은 아래와 같습니다.   
+- forward proxy는 forward proxy server에서 서버로 요청을 보내므로 클라이언트를 감출 수 있고 reverse proxy는 서버 대신 reverse proxy서버에서 요청을 받아주므로 서버를 감출 수 있습니다.
+- forward proxy의 endpoint는 실제 서버의 도메인인 반면, reverse proxy의 endpoint는 reverse proxy 서버 도메인입니다. 
+
 </details></br>
 
 <details>
     <summary style="font-size : 20px;"><strong> Q. 웹 페이지에서 어떻게 로그인 상태가 유지되나요?</strong></summary></br>
   
+
 </details></br>
 
 <details>
