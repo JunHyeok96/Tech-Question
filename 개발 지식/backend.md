@@ -1,5 +1,30 @@
 # Backend 개발 지식
 
+## 웹 개발 지식
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. 웹 서버와 WAS는 어떤 차이가 있나요?</strong></summary></br>
+  
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. 웹 페이지에서 어떻게 로그인 상태가 유지되나요?</strong></summary></br>
+  
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. 톰캣이 재시작되면 로그인 정보가 날라가는 문제는 어떻게 해결해야하나요?</strong></summary></br>
+  
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. HttpSession은 어떻게 서로다른 session을 구분하나요?</strong></summary></br>
+  
+세션의 동작과정은 이렇습니다. 최초에 클라이언트의 요청이 들어오면 서버는 새로운 HttpSession객체를 생성하고 unique한 session id를 만듭니다. 응답에서 JSessionId를 key로 session id를 value로 하는 쿠키를 만들어 set-cookie 헤더에 담아 전달합니다. 이후 클라이언트는 session id정보가 포함된 쿠키를 요청에 담아 전송합니다. 서버의 서블릿 컨테이너는 모든 요청에 대해 쿠키로 담긴 JSessionId를 확인하여 저장된 HttpSession객체를 가져옵니다. 이 과정을 통해 클라이언트에 대한 정보를 식별할 수 있습니다.
+</details></br>
+
+
+
 ## Servlet
 <details>
     <summary style="font-size : 20px;"><strong> Q. servlet은 무엇인가요?</strong></summary></br>
