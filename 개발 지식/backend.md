@@ -1,5 +1,41 @@
 # Backend 개발 지식
 
+## Servlet
+<details>
+    <summary style="font-size : 20px;"><strong> Q. servlet은 무엇인가요?</strong></summary></br>
+    
+java servlet은 클라이언트 요청에 대한 동적인 처리를 위해 사용되는 프로그램 혹은 사양을 말하며 servlet 컨테이너에 의해 실행되고 관리됩니다.
+servlet의 life cycle은 init, service, destroy 3가지로 구분됩니다. 
+- init은 서블릿이 최초의 한번만 실행되며 서블릿을 초기화합니다. 
+- service는 doGet(), doPost()메서드를 가지고 있으며 클라이언트의 요청을 처리합니다. 
+- destory는 servlet이 제거된 상태입니다. 
+
+
+요청이 들어올 때마다 매번 servlet객체를 만드는 비용이 크기 때문에 init메서드가 호출되면 servlet은 메모리에 저장됩니다.
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. servlet container는 무엇인가요?</strong></summary></br>
+
+servlet container는 http요청을 받아 servlet을 실행시키고 결과를 클라이언트에 응답하는 기능을 제공하는 컴포넌트입니다. servelt container의 역할은 다음과 같습니다.
+- servlet을 실행하고 생명주기를 관리
+- 멀티 스레딩을 관리하여 클라이언트의 여러 요청을 처리
+- 웹 서버(nginx, apache..)와 통신을 지원  
+대표적인 container로 tomcat, jetty, jboss등이 있습니다.
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. servlet 동작 과정은?</strong></summary></br>
+    
+1. 클라이언트가 요청을 전송하면 servlet container에서 HttpServletRequest, HttpServletResponse를 생성합니다.
+2. web.xml파일을 확인하여 어떤 서블릿에 대한 요청인지 구분합니다.
+3. 컨테이너는 service()메서드를 호출하여 요청 메서드에 따라 doGet() 또는 doPost()를 호출합니다.
+4. doGet(), doPost()메서드에서 요청을 처리하여 HttpServletResponse객체에 응답을 전달합니다.
+5. 응답이 완료되면 HttpServletRequest, HttpServletResponse객체는 소멸됩니다.
+</details></br>
+
+
+## JPA
 <details>
     <summary style="font-size : 20px;"><strong> Q. ORM/JPA는 무엇인가요?</strong></summary></br>
     
@@ -126,6 +162,7 @@ JSON으로 변환과정에서 팀의 엔티티까지 변환시키려고 할 것�
 JPA에서는 read=true 속성이 설정되면 영속성 컨텍스트 flush가 발생하지 않습니다. Flush는 영속성 컨텐스트의 변경내용을 데이터 베이스와 동기화하는 작업을 말합니다.
 </details></br>
 
+## Spring
 <details>
     <summary style="font-size : 20px;"><strong> IoC, DI는 무엇인가요?</strong></summary></br>
 
