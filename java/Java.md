@@ -1,5 +1,24 @@
 # JAVA
 
+<details>
+    <summary style="font-size : 20px;"><strong>  Q. JAVA 8, 11버전의 특징은 무엇인가요? </strong></summary></br>
+   
+**Java8**
+- 저장된 데이터를 처리하기위한 stream api가 추가되었습니다.
+- 람다 표현식을 통해 함수형 프로그래밍이 가능합니다.
+- Optional class의 등장으로 null값 처리를 간결하게 할 수 있습니다.
+- 인터페이스에 default메서드가 추가되어 기본 동작을 정의할 수 있습니다.
+- java.time패키지에 새로운 API가 등장했습니다(LocalDate, LocalDateTime등) 기존의 Calendar클래스는 월이 0부터 시작하고 불변 객체가 아니라는 단점이 있었습니다.
+- default GC은 parallel GC입니다.
+
+**Java11**
+- Nest기반 접근 제어를 통해 논리적으로 같은 클래스를 분리된 클래스로 컴파일 할 수 있게 해줍니다. nestedmates간에는 서로 private 맴버에 접근할 수 있습니다.
+- HttpClient가 standard로 지정되었습니다.
+- 람다 파라미터로 var를 사용할 수 있게되었습니다.
+- ZGC, Eplison이라는 새로운 GC가 추가되었습니다.
+- default GC은 G1GC입니다.
+
+</details></br>
 
 <details>
     <summary style="font-size : 20px;"><strong>  Q. JDK, JRE, JVM의 차이는?   </strong></summary></br>
@@ -129,7 +148,9 @@ Java는 항상 call by value로 동작합니다. call by value임에도 불구�
 <details>
     <summary style="font-size : 20px;"><strong> Q.  checked exception과 uncheck exception의 차이는 무엇인가요?  </strong></summary></br>
       
-checked exception은 컴파일 단계에서 확인되는 예외로서 IOException, SQLException등이 포함되고 코드상으로 예외처리를 작성해야합니다. 또한, 예외 발생시 트랜잭션이 rollback되지않습니다.   unchecked exception은 런타임시 확인되는 예외로서 RuntimeException을 상속 받습니다. NullPointerException, IllegalArgumentException등이 포함됩니다. 코드상에서 명시적으로 예외를 처리하지 않아도 실행가능하고 예외 발생시 트랜잭션시 rollback됩니다.
+checked exception은 컴파일 단계에서 확인되는 예외로서 IOException, SQLException등이 포함되고 코드상으로 예외처리를 작성해야합니다. 또한, 예외 발생시 트랜잭션이 rollback되지않습니다.   
+
+unchecked exception은 런타임시 확인되는 예외로서 RuntimeException을 상속 받습니다. NullPointerException, IllegalArgumentException등이 포함됩니다. 코드상에서 명시적으로 예외를 처리하지 않아도 실행가능하고 예외 발생시 트랜잭션시 rollback됩니다.
 
 </details></br>
 
