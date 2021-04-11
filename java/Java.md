@@ -1,6 +1,49 @@
 # JAVA
 
 <details>
+    <summary style="font-size : 20px;"><strong>  Q. 객체 지향은 무엇인가요?   </strong></summary></br>
+   
+객체지향은 실세계 사물을 추상화하여 맴버 변수와 메서드를 정의합니다. 객체들 사이의 관계를 정의하면서 다형성 구현하거나, 추상화할 수 있으며, 캡슐화를 통해 객체의 정보를 은닉할 수 있습니다. 
+이런 특징으로 코드의 재사용성이 높아 개발과 유지보수에 효과적입니다.
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong>  Q. OOP의 4가지 특징은 무엇인가요?   </strong></summary></br>
+   
+추상화 : 구체적인 사물들의 공통적인 특징을 파악해서 이를 하나의 개념으로 다루는 것  
+캡슐화 : 정보 은닉을 목적으로 외부에 불필요한 정보 노출을 막는 것  
+상속 : 부모의 속성과 기능을 상속받아 재사용하는 것 	  
+다형성 : 하나의 기능에 대해 각자의 방식으로 동작하는 것  
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong>  Q. OOP의 5대 원칙(SOLID)은 무엇인가요?   </strong></summary></br>
+   
+S(SRP, Single Responsibility Principle) 단일 책임 원칙 : 객체는 하나의 책임만을 지녀야합니다.  
+O(OCP, Open Closed Principle) 개방-폐쇄 원칙 : 확장에 대해서는 열려있어야하며 요구 사항 변경, 추가사항 발생시 코드 수정은 닫혀 있어야합니다.  
+L(LSP, Liskov Substitution Principle) 리스코프 치환 원칙 : 일반화에 관계된 내용이며, 자식 클래스는 부모 클래스에서 가능한 행위를 수행할 수 있어야합니다.  
+I(ISP, Interface Segregation Principle) 인터페이스 분리 원칙 : 한 클래스는 자신이 사용하지 않는 인터페이스는 구현하지 말아야합니다. 다르게 말하면 하나의 일반적인 인터페이스보다는 구체적인 여러 개의 인터페이스가 낫습니다. 인터페이스 단일 책임을 강조합니다.  
+D(DIP, Dependency Inversion Principle) 의존 역전 원칙 : 의존 관계를 맺을 때 변화하기 쉬운 것 또는 자주 변화하는 것 보다는 변화하기 어려운 것, 거의 변화가 없는 것에 의존해야합니다.  
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong>  Q. OOP의 5대 원칙(SOLID)은 무엇인가요?   </strong></summary></br>
+   
+S(SRP, Single Responsibility Principle) 단일 책임 원칙 : 객체는 하나의 책임만을 지녀야합니다.  
+O(OCP, Open Closed Principle) 개방-폐쇄 원칙 : 확장에 대해서는 열려있어야하며 요구 사항 변경, 추가사항 발생시 코드 수정은 닫혀 있어야합니다.  
+L(LSP, Liskov Substitution Principle) 리스코프 치환 원칙 : 일반화에 관계된 내용이며, 자식 클래스는 부모 클래스에서 가능한 행위를 수행할 수 있어야합니다.  
+I(ISP, Interface Segregation Principle) 인터페이스 분리 원칙 : 한 클래스는 자신이 사용하지 않는 인터페이스는 구현하지 말아야합니다. 다르게 말하면 하나의 일반적인 인터페이스보다는 구체적인 여러 개의 인터페이스가 낫습니다. 인터페이스 단일 책임을 강조합니다.  
+D(DIP, Dependency Inversion Principle) 의존 역전 원칙 : 의존 관계를 맺을 때 변화하기 쉬운 것 또는 자주 변화하는 것 보다는 변화하기 어려운 것, 거의 변화가 없는 것에 의존해야합니다.  
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong>  Q. 객체지향프로그래밍과 절차지향프로그래밍의 차이는?   </strong></summary></br>
+   
+절차지향 프로그래밍은 실행하는 절차를 만들고, 이 절차에 맞게 프로그래밍하는 방법  
+객체지향 프로그래밍은 대상을 객체로 표현하고 객체 사이에 관계, 상호작용을 프로그래밍하는 방법. 
+</details></br>
+
+<details>
     <summary style="font-size : 20px;"><strong>  Q. JAVA 8, 11버전의 특징은 무엇인가요? </strong></summary></br>
    
 **Java8**
@@ -116,6 +159,24 @@ static은 클래스 로딩시 메소드 영역에 적재되고 프로그램 종�
 </details></br>
 
 <details>
+    <summary style="font-size : 20px;"><strong>  Q. Java에서 final 키워드는 무엇인가요? </strong></summary></br>
+    
+Final 키워드가 변수에 선언된 경우 재할당을 금지합니다. 일반적인 원시 타입에 final을 선언한 경우 값을 변경할 수 없게 만들지만, 참조 자료형에 final이 선언된 경우 재할당은 금지되지만 내부의 값은 변경 가능합니다.   
+Final 키워드가 메서드에 붙으면 오버라이딩을 금지합니다.   
+Final 키워드가 클래스에 붙으면 상속을 금지합니다.
+</details></br>
+
+
+<details>
+    <summary style="font-size : 20px;"><strong>  Q. Java에서 클래스, 객체, 인스턴스의 차이는 무엇인가요? </strong></summary></br>
+    
+클래스 : 객체를 만들어 내기 위한 설계도  
+객체 :  클래스의 인스턴스를 의미
+인스턴스 : 설계도를 바탕으로 소프트웨어 세계에서 구현된 실체. 메모리가 할당됨
+</details></br>
+
+
+<details>
     <summary style="font-size : 20px;"><strong>  Q. Java에서 Generic은 무엇인가요?  </strong></summary></br>
     
 Generic은 객체의 생성 시점에 타입을 결정하여 유연한 개발을 하는데 도움을 줍니다. 대표적으로 Collection 프레임워크가 Generic을 사용합니다. Generic없이도 Object타입으로 객체를 받아 처리할 수는 있지만, 런타임 과정에서 예기치 않은 ClassCastException이 발생할 수 있습니다. Generic은 이런 단점을 해소하기 위해 컴파일시 타입 체킹을 합니다. Object로 타입이라면 강제 casting이 필요하지만, Generic을 사용하면 컴파일러에서 캐스팅 코드를 생성해줍니다.
@@ -203,5 +264,33 @@ StringBuilder는 append()를 사용하여 문자를 쌓았다가 toString()메�
 
 StringBuffer는 StringBuilder와 방식이 동일하지만 thread safe한 특징이 있습니다.    
 </br></br>
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. Synchronized 키워드는 무엇인가요?  </strong></summary></br>
+ 
+Synchronized는 동기화를 위한 키워드로서 lock을 걸어 여러 스레드가 대상에 동시에 접근하는 상황을 방지해줍니다.  
+Synchronized method는 함수와 자신이 포함된 객체에 lock을 겁니다.  
+Synchornized block은 필요한 부분만 동기화처리를 해줄 수 있습니다.  
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. Thread의 생명 주기는?  </strong></summary></br>
+ 
+NEW : 스레드가 생성되었지만 스레드가 아직 실행할 준비가 되지 않음  
+RUNNABLE : 스레드가 실행되고 있거나 실행준비되어 스케쥴링은 기달리는 상태  
+WAITING : 다른 스레드가 notify(), notifyAll()을 불러주기 기다리고 있는 상태  
+TIMED_WAITING : 스레드가 sleep(n) 호출로 인해 n 밀리초동안 잠을 자고 있는 상태   
+BLOCK : 스레드가 I/O 작업을 요청하면 자동으로 스레드를 BLOCK 상태로 만듦.  
+TERMINATED : 스레드가 종료한 상태  
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. hashcode()와 equals()의 차이는?  </strong></summary></br>
+ 
+hashcode()는 객체의 주소 값을 해싱하여 정수로 표현하는 메서드를 의미합니다.  
+equals()는 객체의 동일성을 비교하는 메서드로 == 연산을 사용하여 객체의 주소 값을 비교합니다.  
+
+equals()는 일반적으로 Overriding될 수 있고 대표적인 예가 String 클래스의 equals()입니다. equals()를 Overriding하여 객체의 동등성을 비교하게 만들 수 있습니다. 이때, hashcode()도 같이 overriding을 해줘야합니다. collection에서 key값을 사용해 데이터를 insert할 때 hashcode()가 호출됩니다. 만약, equals()를 overriding해서 객체의 동등성을 비교하는 상황에서 hashcode()를 overriding하지 않았다면 같은 내용의 객체가 서로다른 버킷에 할당될 가능성이 있습니다.
 </details></br>
 
