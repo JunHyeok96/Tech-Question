@@ -284,3 +284,9 @@ equals()는 객체의 동일성을 비교하는 메서드로 == 연산을 사용
 equals()는 일반적으로 Overriding될 수 있고 대표적인 예가 String 클래스의 equals()입니다. equals()를 Overriding하여 객체의 동등성을 비교하게 만들 수 있습니다. 이때, hashcode()도 같이 overriding을 해줘야합니다. collection에서 key값을 사용해 데이터를 insert할 때 hashcode()가 호출됩니다. 만약, equals()를 overriding해서 객체의 동등성을 비교하는 상황에서 hashcode()를 overriding하지 않았다면 같은 내용의 객체가 서로다른 버킷에 할당될 가능성이 있습니다.
 </details></br>
 
+
+<details>
+    <summary style="font-size : 20px;"><strong> Q. String s = "abc"와 String s = new String("abc")의 차이는?  </strong></summary></br>
+ 
+new String("abc")는 heap영역에 할당되고 리터럴인 "abc"는 heap영역의 String constant pool에 저장됩니다. 만약 리터럴이 사용되는 경우 String constant pool을 확인하고 존재하면 재사용하지만, heap영역에 객체로 생성된 new String("abc")는 매번 새로운 객체를 만들어 사용합니다. 따라서 new키워드로 String 객체를 사용하는 방식은 지양해야합니다.
+</details></br>
