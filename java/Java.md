@@ -3,7 +3,7 @@
 <details>
     <summary style="font-size : 20px;"><strong>  Q. 객체 지향은 무엇인가요?   </strong></summary></br>
    
-객체지향은 실세계 사물을 추상화하여 맴버 변수와 메서드를 정의합니다. 객체들 사이의 관계를 정의하면서 다형성 구현하거나, 추상화할 수 있으며, 캡슐화를 통해 객체의 정보를 은닉할 수 있습니다. 
+객체지향은 실세계의 개념을 추상화하여 맴버 변수와 메서드를 정의합니다. 객체들 사이의 관계를 정의하면서 다형성 구현하거나, 추상화할 수 있으며, 캡슐화를 통해 객체의 정보를 은닉할 수 있습니다. 
 이런 특징으로 코드의 재사용성이 높아 개발과 유지보수에 효과적입니다.
 </details></br>
 
@@ -12,33 +12,33 @@
    
 추상화 : 구체적인 사물들의 공통적인 특징을 파악해서 이를 하나의 개념으로 다루는 것  
 캡슐화 : 정보 은닉을 목적으로 외부에 불필요한 정보 노출을 막는 것  
-상속 : 부모의 속성과 기능을 상속받아 재사용하는 것 	  
+상속 : 부모의 속성과 기능을 상속받아 사용하는 것 	  
 다형성 : 하나의 기능에 대해 각자의 방식으로 동작하는 것  
 </details></br>
 
 <details>
     <summary style="font-size : 20px;"><strong>  Q. OOP의 5대 원칙(SOLID)은 무엇인가요?   </strong></summary></br>
    
-S(SRP, Single Responsibility Principle) 단일 책임 원칙 : 객체는 하나의 책임만을 지녀야합니다.  
-O(OCP, Open Closed Principle) 개방-폐쇄 원칙 : 확장에 대해서는 열려있어야하며 요구 사항 변경, 추가사항 발생시 코드 수정은 닫혀 있어야합니다.  
-L(LSP, Liskov Substitution Principle) 리스코프 치환 원칙 : 일반화에 관계된 내용이며, 자식 클래스는 부모 클래스에서 가능한 행위를 수행할 수 있어야합니다.  
-I(ISP, Interface Segregation Principle) 인터페이스 분리 원칙 : 한 클래스는 자신이 사용하지 않는 인터페이스는 구현하지 말아야합니다. 다르게 말하면 하나의 일반적인 인터페이스보다는 구체적인 여러 개의 인터페이스가 낫습니다. 인터페이스 단일 책임을 강조합니다.  
-D(DIP, Dependency Inversion Principle) 의존 역전 원칙 : 의존 관계를 맺을 때 변화하기 쉬운 것 또는 자주 변화하는 것 보다는 변화하기 어려운 것, 거의 변화가 없는 것에 의존해야합니다.  
+S(SRP, Single Responsibility Principle) 단일 책임 원칙 : 객체는 단일 책임만을 지녀야하며 변경의 이유는 오직 그 책임에 관련되어야합니다.
+O(OCP, Open Closed Principle) 개방-폐쇄 원칙 : 변경 사항 발생시 수정에 대해서는 닫혀있어야하며 확장에서 대해서는 열려있어야합니다.
+L(LSP, Liskov Substitution Principle) 리스코프 치환 원칙 : 상위 타입은 하위 타입으로 대체되어도 동작해야한다.
+I(ISP, Interface Segregation Principle) 인터페이스 분리 원칙 : 하나의 일반적인 인터페이스보다는 구체적인 여러 개의 인터페이스가 낫습니다.
+D(DIP, Dependency Inversion Principle) 의존 역전 원칙 : 의존 관계를 맺을 때 변화가 쉽거나 잦은 구체적인 대상이 아닌 변화하기 어려운, 거의 변화가 없는 추상화된 대상에 의존해야합니다.
 </details></br>
 
 <details>
     <summary style="font-size : 20px;"><strong>  Q. 객체지향프로그래밍과 절차지향프로그래밍의 차이는?   </strong></summary></br>
    
 절차지향 프로그래밍은 실행하는 절차를 만들고, 이 절차에 맞게 프로그래밍하는 방법  
-객체지향 프로그래밍은 대상을 객체로 표현하고 객체 사이에 관계, 상호작용을 프로그래밍하는 방법. 
+객체지향 프로그래밍은 대상을 객체로 표현하고 객체 사이에 관계, 상호작용을 통해 프로그래밍하는 방법. 
 </details></br>
 
 <details>
     <summary style="font-size : 20px;"><strong>  Q. JAVA 8, 11버전의 특징은 무엇인가요? </strong></summary></br>
    
 **Java8**
-- 저장된 데이터를 처리하기위한 stream api가 추가되었습니다.
-- 람다 표현식을 통해 함수형 프로그래밍이 가능합니다.
+- 데이터를 처리하기위한 stream api가 추가되었습니다.
+- 람다 표현식을 통해 함수형 프로그래밍이 가능해졌습니다.
 - Optional class의 등장으로 null값 처리를 간결하게 할 수 있습니다.
 - 인터페이스에 default메서드가 추가되어 기본 동작을 정의할 수 있습니다.
 - java.time패키지에 새로운 API가 등장했습니다(LocalDate, LocalDateTime등) 기존의 Calendar클래스는 월이 0부터 시작하고 불변 객체가 아니라는 단점이 있었습니다.
@@ -64,7 +64,7 @@ D(DIP, Dependency Inversion Principle) 의존 역전 원칙 : 의존 관계를 �
 <details>
     <summary style="font-size : 20px;"><strong>  Q. JAVA의 실행과정을 말해주세요. </strong></summary></br>
    
-자바 코드를 컴파일하면 바이트코드가 생성되고 JVM은 바이트 코드를 운영체제가 이해할 수 있는 기계어로 바꿔 실행시켜주는 역할을 합니다.
+자바 코드를 컴파일하면 바이트코드가 생성되고 JVM의 class loader는 런타임시 바이트 코드를 읽어 runtime data area의 method영역으로 적재합니다. 적재된 바이트 코드는 JVM의 execution engine을 통해 기계어로 번역되어 실행됩니다.
 </details></br>
 
 <details>
@@ -77,7 +77,7 @@ D(DIP, Dependency Inversion Principle) 의존 역전 원칙 : 의존 관계를 �
     <summary style="font-size : 20px;"><strong>  Q. JVM 구조에 대해서 설명해주세요. </strong></summary></br>
    
 JVM은 class loader, execution engine, garbage collector, runtime data area로 구성됩니다.  
-- Class loader는 런타임시 class파일을 읽어 runtime data area의 메서드 영역에 적재하는 역할을 합니다.  
+- Class loader는 런타임시 .class파일(바이트 코드)을 읽어 runtime data area의 메서드 영역에 적재하는 역할을 합니다.  
 - Execution engine은 Runtime Data Area의 메서드 영역에 적재된 바이트 코드를 기계어로 변경해서 실행하는 역할을 합니다.  
 - Garbage collector는 heap 메모리에 생성된 객체 중 참조되지 않는 객체들을 탐색 후 제거하는 역할을 한다. GC는 데몬 스레드로 수행되며, 수행 중에는 모든 스레드가 중단됩니다.    
 - Runtime Data Area는 JVM의 메모리 영역으로서 자바 애플리케이션이 실행될 때 사용되는 데이터들을 적재하는 영역입니다. 이 영역은 메소드 영역, 힙 영역, 스택 영역, pc레지스터, 네이티브 메서드 스택으로 구분됩니다.
@@ -87,8 +87,8 @@ JVM은 class loader, execution engine, garbage collector, runtime data area로 �
     <summary style="font-size : 20px;"><strong>  Q. JVM의 메모리 구조는 어떻게 구성되어 있나요? </strong></summary></br>
    
 JVM의 메모리 구조는 메서드(클래스/static) 영역, 힙 영역, 스택 영역, pc 레지스터, 네이티브 메서드 스택으로 구성됩니다. 
-- 메서드 영역에서는 프로그램이 실행중에 클래스가 사용되면 JVM은 해당 클래스의 class파일을 읽어 클래스에 대한 정보를 저장하는 영역입니다. static 맴버, static 메서드도 이 영역에 저장됩니다.
-- 힙 영역은 new 키워드로 생성된 객체와 배열이 저장되는 영역이다. 메소드 영역에 로드된 클래스만 생성 가능합니다. GC에의해 참조되지 않는 메모리가 제거됩니다. 
+- 메서드 영역에서는 프로그램이 실행중에 클래스가 사용되면 JVM은 해당 클래스의 .class파일을 읽어 클래스에 대한 정보를 저장하는 영역입니다. static 맴버, static 메서드도 이 영역에 저장됩니다.
+- 힙 영역은 new 키워드로 생성된 객체와 배열이 저장되는 영역이다. 메소드 영역에 로드된 클래스만 생성 가능합니다. GC에의해 참조되지 않는 객체는 제거됩니다. 
 - 스택 영역은 지역 변수, 매개 변수, 리턴 값등이 생성되는 영역입니다. 
 - PC 레지스터는 현재 스레드가 실행되는 부분의 주소와 명령을 저장하는 영역입니다. 
 - 네이티브 메서드 스택은 자바 외 언어로 작성된 네이티브를 위한 메모리 영역입니다.
@@ -98,11 +98,11 @@ JVM의 메모리 구조는 메서드(클래스/static) 영역, 힙 영역, 스�
 
 <details>
     <summary style="font-size : 20px;"><strong>  Q. GC는 어떻게 동작하나요? </strong></summary></br>
-   
-JVM의 힙 영역은 eden, survivor1, survivor2, old로 구성됩니다. GC는 마이너 GC와 메이저 GC로 나뉘어집니다.  
+    
+JVM의 힙 영역은 eden, survivor1, survivor2, old로 구성됩니다. GC는 마이너GC와 메이저GC로 나뉘어집니다.  
   
 Minor GC는 Young Gerneration영역에서 일어나는 GC입니다. Young Gerneration영역은 eden, survivor영역을 말합니다.
-1. 최초에 객체는 eden영역에 생성됩니다. eden영역이 가득차면 첫 번째 GC가 발생합니다. 참조되고 있지 않은 객체는 제거하고, 참조되고있는 객체는 survivor1영역에 eden영역의 메모리를 복사합니다.
+1. 최초에 객체는 eden영역에 생성됩니다. eden영역이 가득차면 첫 번째 GC가 발생합니다. 참조되고 있지 않은 객체는 제거하고, 참조되고있는 객체는 survivor1영역으로 옮겨집니다.
 2. eden영역이 다시 가득차면 eden영역에 객체와 survivor1영역에 생성된 객체중 참조되고있는 객체가 있는지 검사합니다. 참조되지 않는 객체는 제거하고 참조되는 객체는 survivor2영역에 복사합니다. 
 3. survivor1과 survivor2로 객체의 이동을 반복하면서 살아있는 객체는 Age bit에 살아남은 횟수를 기록하고 age bit가 threshold값 이상이 되거나 survivor영역의 메모리가 부족해지면 old영역으로 이동합니다. survivor1과 survivor2를 이동하는 이유는 메모리 단편화를 피하기 위해서입니다. 이처럼 JVM에서 한 곳에 객체를 모으는 방식을 Compaction 이라고 합니다. 
 
