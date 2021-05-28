@@ -19,11 +19,11 @@
 <details>
     <summary style="font-size : 20px;"><strong>  Q. OOP의 5대 원칙(SOLID)은 무엇인가요?   </strong></summary></br>
    
-S(SRP, Single Responsibility Principle) 단일 책임 원칙 : 객체는 단일 책임만을 지녀야하며 변경의 이유는 오직 그 책임에 관련되어야합니다.
-O(OCP, Open Closed Principle) 개방-폐쇄 원칙 : 변경 사항 발생시 수정에 대해서는 닫혀있어야하며 확장에서 대해서는 열려있어야합니다.
-L(LSP, Liskov Substitution Principle) 리스코프 치환 원칙 : 상위 타입은 하위 타입으로 대체되어도 동작해야한다.
-I(ISP, Interface Segregation Principle) 인터페이스 분리 원칙 : 하나의 일반적인 인터페이스보다는 구체적인 여러 개의 인터페이스가 낫습니다.
-D(DIP, Dependency Inversion Principle) 의존 역전 원칙 : 의존 관계를 맺을 때 변화가 쉽거나 잦은 구체적인 대상이 아닌 변화하기 어려운, 거의 변화가 없는 추상화된 대상에 의존해야합니다.
+- S(SRP, Single Responsibility Principle) 단일 책임 원칙 : 객체는 단일 책임만을 지녀야하며 변경의 이유는 오직 그 책임에 관련되어야합니다.
+- O(OCP, Open Closed Principle) 개방-폐쇄 원칙 : 변경 사항 발생시 수정에 대해서는 닫혀있어야하며 확장에서 대해서는 열려있어야합니다.
+- L(LSP, Liskov Substitution Principle) 리스코프 치환 원칙 : 상위 타입은 하위 타입으로 대체되어도 동작해야한다.
+- I(ISP, Interface Segregation Principle) 인터페이스 분리 원칙 : 하나의 일반적인 인터페이스보다는 구체적인 여러 개의 인터페이스가 낫습니다.
+- D(DIP, Dependency Inversion Principle) 의존 역전 원칙 : 의존 관계를 맺을 때 변화가 쉽거나 잦은 구체적인 대상이 아닌 변화하기 어려운, 거의 변화가 없는 추상화된 대상에 의존해야합니다.
 </details></br>
 
 <details>
@@ -42,6 +42,7 @@ D(DIP, Dependency Inversion Principle) 의존 역전 원칙 : 의존 관계를 �
 - Optional class의 등장으로 null값 처리를 간결하게 할 수 있습니다.
 - 인터페이스에 default메서드가 추가되어 기본 동작을 정의할 수 있습니다.
 - java.time패키지에 새로운 API가 등장했습니다(LocalDate, LocalDateTime등) 기존의 Calendar클래스는 월이 0부터 시작하고 불변 객체가 아니라는 단점이 있었습니다.
+- permenent 영역이 사라지고 metaspace영역이 생겼습니다.
 - default GC은 parallel GC입니다.
 
 **Java11**
@@ -106,9 +107,9 @@ Minor GC는 Young Gerneration영역에서 일어나는 GC입니다. Young Gerner
 2. eden영역이 다시 가득차면 eden영역에 객체와 survivor1영역에 생성된 객체중 참조되고있는 객체가 있는지 검사합니다. 참조되지 않는 객체는 제거하고 참조되는 객체는 survivor2영역에 복사합니다. 
 3. survivor1과 survivor2로 객체의 이동을 반복하면서 살아있는 객체는 Age bit에 살아남은 횟수를 기록하고 age bit가 threshold값 이상이 되거나 survivor영역의 메모리가 부족해지면 old영역으로 이동합니다. survivor1과 survivor2를 이동하는 이유는 메모리 단편화를 피하기 위해서입니다. 이처럼 JVM에서 한 곳에 객체를 모으는 방식을 Compaction 이라고 합니다. 
 
-Major GC는 Full GC로 Old 영역에서 일어나는 GC이다.
+Major GC는 Full GC로 Old 영역에서 일어나는 GC입니다.
 1.	Old영역에 데이터가 가득차면 GC를 실행합니다. old영역에 모든 객체를 검사하여 참조되고 있는지 확인합니다.
-2.	참조되지 않는 객체들을 모아 한번에 제거한다. Minor GC에 비해 시간이 오래걸리고 작업중 GC스레드를 제외한 모든 스레드가 중단된다.
+2.	참조되지 않는 객체들을 모아 한번에 제거한다. Minor GC에 비해 시간이 오래걸리고 작업중 GC스레드를 제외한 모든 스레드가 중단됩니다.
   </details></br>
 
 <details>
@@ -121,7 +122,7 @@ Garbage Collector에 의해 사용하지 않는 메모리를 자동으로 수거
 멀티 스레딩이 가능합니다.   
 
 **단점**  
-바이트 코드로 컴파일 후 인터프리터 방식으로 동작하여 실행 속도가 느립니다.
+바이트 코드로 컴파일 후 인터프리터 방식으로 동작하여 실행 속도가 느립니다.  
 checked exception은 예외 처리가 없다면 실행할 수 없습니다.
 </details></br>
     
@@ -137,23 +138,34 @@ public : 모든 클래스에서 접근이 가능합니다.
 <details>
     <summary style="font-size : 20px;"><strong>  Q. JAVA에서 static은 무엇인가요? </strong></summary></br>
  
-static으로 선언된 필드와 메서드는 객체의 생성 없이도 접근이 가능합니다. static으로 선언된 맴버와 메서드는 클래스 로딩시 메서드 영역에 생성되고 프로그램이 종료될 때 소멸합니다. static으로 선언된 필드는 동일 클래스를 새롭게 생성하더라도 같은 값을 공유해서 사용하는 특징이있습니다. static으로 선언된 메서드에서는 클래스의 필드를 사용하지 못하고 static으로 선언된 필드만 사용이 가능합니다.
+- static으로 선언된 필드와 메서드는 객체의 생성 없이도 접근이 가능합니다.  
+- static으로 선언된 맴버와 메서드는 클래스 로딩시 메서드 영역에 생성되고 프로그램이 종료될 때 소멸합니다.  
+- static으로 선언된 필드는 동일 클래스를 새롭게 생성하더라도 같은 값을 공유해서 사용하는 특징이있습니다.    
+- static으로 선언된 메서드에서는 클래스의 필드를 사용하지 못하고 static으로 선언된 필드만 사용이 가능합니다.  
 </details></br>
 
             
 <details>
-    <summary style="font-size : 20px;"><strong>  Q. static을 어떤 경우에 설정하면 좋을 까요? </strong></summary></br>
-    
-static은 클래스 로딩시 메소드 영역에 적재되고 프로그램 종료시 소멸하는 특징이 있습니다. static은 객체 생성 없이 사용할 수 있어 빠르지만 한번 만들어지면 GC에의해 제거되지 않기 때문에 너무 static을 남발하면 시스템 성능 저하를 가져올 수 있습니다. 또한, static 맴버는 값을 공유하는 특징이 있어 thread safe여부를 신경써야합니다. static으로 활용하면 좋은 상황은 객체의 생성 없이 접근 가능하게 유틸 클래스를 private 생성자로 구성하고 static 메서드를 사용하게 하는 방식이 있습니다. java에서 Math클래스가 이런 방식을 사용합니다. 또한, 싱글턴 패턴을 구현하는데 정적 팩터리 메서드를 만들어 동일한 인스턴스를 반환하도록 사용할 수 있고 인스턴스간 공유 데이터를 사용할 때 static 필드를 활용할 수 있습니다.
+    <summary style="font-size : 20px;"><strong>  Q. static의 장단점은 무엇인가요? </strong></summary></br>
+
+장점  
+static은 객체 생성 없이 사용할 수 있어 빠릅니다.
+  
+단점  
+한번 만들어지면 GC에의해 제거되지 않습니다.
+static을 사용하면 객체를 캡슐화하여 메시지를 교환하는 객체 지향적인 특성과 맞지않습니다.
+static 맴버는 값을 공유하는 특징이 있어 thread safe여부를 신경써야합니다.
+
+static으로 활용하면 좋은 상황은 객체의 생성 없이 접근 가능하게 유틸 클래스를 private 생성자로 구성하고 static 메서드를 사용하게 하는 방식이 있습니다. java에서 Math클래스가 이런 방식을 사용합니다. 또한, 싱글턴 패턴을 구현하는데 정적 팩터리 메서드를 만들어 동일한 인스턴스를 반환하도록 사용할 수 있고 인스턴스간 공유 데이터를 사용할 때 static을 활용할 수 있습니다.
 
 </details></br>
 
 <details>
     <summary style="font-size : 20px;"><strong>  Q. Java에서 final 키워드는 무엇인가요? </strong></summary></br>
     
-Final 키워드가 변수에 선언된 경우 재할당을 금지합니다. 일반적인 원시 타입에 final을 선언한 경우 값을 변경할 수 없게 만들지만, 참조 자료형에 final이 선언된 경우 재할당은 금지되지만 내부의 값은 변경 가능합니다.   
-Final 키워드가 메서드에 붙으면 오버라이딩을 금지합니다.   
-Final 키워드가 클래스에 붙으면 상속을 금지합니다.
+- Final 키워드가 변수에 선언된 경우 재할당을 금지합니다. 원시 타입에 final을 선언한 경우 값을 변경할 수 없게 만들지만, 참조 자료형에 final이 선언된 경우 재할당은 금지되지만 내부의 값은 변경 가능합니다.   
+- Final 키워드가 메서드에 붙으면 오버라이딩을 금지합니다.   
+- Final 키워드가 클래스에 붙으면 상속을 금지합니다.
 </details></br>
 
 
@@ -161,8 +173,8 @@ Final 키워드가 클래스에 붙으면 상속을 금지합니다.
     <summary style="font-size : 20px;"><strong>  Q. Java에서 클래스, 객체, 인스턴스의 차이는 무엇인가요? </strong></summary></br>
     
 클래스 : 객체를 만들어 내기 위한 설계도  
-객체 :  클래스의 인스턴스를 의미
-인스턴스 : 설계도를 바탕으로 소프트웨어 세계에서 구현된 실체. 메모리가 할당됨
+객체 : 클래스의 인스턴스를 의미   
+인스턴스 : 설계도를 바탕으로 소프트웨어 세계에서 구현된 실체. 메모리가 할당됨  
 </details></br>
 
 
