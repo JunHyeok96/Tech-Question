@@ -247,7 +247,8 @@ OOP의 경우 비즈니스 로직의 모듈화가 핵심이라면 AOP는 인프�
     <summary style="font-size : 20px;"><strong>스프링 AOP는 어떻게 동작하나요?</strong></summary></br>
 
 스프링 aop는 프록시 패턴의 런타임 위빙 방식을 사용합니다.
-스프링 aop는 JDK Dynamic Proxy, CGLIB 두 가지를 사용합니다. 
+스프링 aop는 JDK Dynamic Proxy, CGLIB 두 가지를 사용합니다.   
+
 **JDK Dynamic Proxy** : Proxy Factory에게 타겟의 인터페이스 정보를 넘겨주면 타겟의 인터페이스를 상속한 Proxy 객체를 생성한다. Proxy 객체에서 invocationHandler를 구현하면되는데,  invoke 메서드를 오버라이딩하면서 부가기능을 구현할 수 있습니다. JDK Dynamic Proxy방식은 Java reflection을 사용해 target class의 method를 invoke하며, Advise대상이든 아니든 모든 method call마다 reflection invoke를 실시하므로 성능이 떨어집니다. JDK Dynamic Proxy방식은 interface가 반드시 필요합니다.
 
 **CGLIB** :  CGLIB는 Enhancer라는 클래스를 바탕으로 프록시를 생성합니다. CGLIB Proxy는 Target Class를 상속받아 생성된다. CGLIB방식은 Interface가 필요하지 않습니다. 하지만 상속을 이용하는 만큼, final, private와 같이 overriding이 불가능한경우 사용할 수 없다. @Transactional, @Cacheable같은 어노테이션을 사용할 때 private이 안되는 이유가 이것 때문이다. methodInterceptor를 구현하면되는데, intercept 메서드를 오버라이딩하면서 부가기능을 구현한다. CGLIB방식은 메서드가 최초 호출될 때만 동적으로 Bytecode를 생성하고 다음 호출부터는 재사용하기 때문에 속도가 더 빠르다.
@@ -255,4 +256,41 @@ OOP의 경우 비즈니스 로직의 모듈화가 핵심이라면 AOP는 인프�
 Spring에서 타겟 클래스의 인터페이스 구현 여부에 따라 방식이 달라집니다. Spring boot는 이와 상관없이 CGLIB방식이 default입니다.
 </details></br>
 
+## 기타
+<details>
+    <summary style="font-size : 20px;"><strong>1급 객체는 무엇인가요?</strong></summary></br>
+
+1급 객체는 다음과 같은 조건을 만족하는 객체입니다.
+- 변수나 데이터 구조에 할당할 수 있음
+- 파라미터로 사용가능함
+- return값으로 사용 가능함
+- 비교 연산이 가능함
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong>함수형 프로그래밍은 무엇인가요?</strong></summary></br>
+
+함수형 프로그래밍은 순수 함수, 즉 동일한 input에 대해 항상 동일한 output을 반환하며 함수의 실행으로 인한 프로그램 내 side effect가 없는 함수를 조합하고 공유 상태, 변경 가능한 데이터, side effect를 피하여 소프트웨어를 만드는 프로세스입니다. 가장 핵심이 되는건 불변의 관점입니다.
+
+함수형 프로그래밍을 사용하면 output은 항상 input에 의존적이며 사이드 이펙트가 없으므로 테스트가 쉽고 예측하기 힘든 문제가 발생하지 않습니다. 또한, 최적화의 관점에서 동일 input에대한 output이 같으므로 캐싱이 가능해집니다. 함수형 프로그래밍에서는 변경가능한 상태를 배제하므로 동시성 문제가 발생하지않는다는 장점도 있습니다.
+
+</details></br>
+
+<details>
+    <summary style="font-size : 20px;"><strong>1급 컬렉션은 무엇인가요?</strong></summary></br>
+
+1급 컬렉션은 컬렉션을 wrapping하면서 그 외 다른 맴버 변수는 없는 것을 의미합니다. 1급 컬렉션의 장점은 다음과 같습니다.
+
+**비즈니스에 종속적인 자료구조**  
+로또 번호의 validation을 검증할 때 매번 서비스 로직에서 검증대신 조건에 만족하는 자료구조로서 활용할 수 있습니다.
+  
+**collection의 불변성을 보장**     
+wrapper 클래스에서 컬렉션 값을 변경하는 메서드를 만들지 않으면 컬렉션 자체가 불변이됩니다
+  
+**상태와 행위를 한 곳에서 관리**   
+컬렉션에는 값에 대한 정보만 있으며 이 값을 사용하는 로직은 다른 곳에있음. 일급 컬렉션으로 상태와 행위를 한 곳에서하면 중복 코드를 줄이고 효율적인 관리가능합니다.
+  
+**이름이 있는 컬렉션**    
+컬렉션 변수에 이름을 붙이는 것이 아닌 클래스에 명명이 가능하므로 검색이 용이합니다. 개발팀/운영팀간 의사소통시 명확한 용어가 정의됩니다.
+</details></br>
 
