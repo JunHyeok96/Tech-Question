@@ -233,14 +233,14 @@ Spring 컨테이너에서 관리되는 객체를 말합니다. Bean은 xml파일
 OOP의 경우 비즈니스 로직의 모듈화가 핵심이라면 AOP는 인프라, 시스템 관련 부가기능등을 모듈화하여 공통된 기능을 처리하는 방식입니다. AOP가 적용된 대표적인 예시는 @Transactional, @Cacheable이 있습니다.
 
 **Target** : 부가기능을 부여할 대상  
-**Aspect** : 관심사를 모듈화 한 것으로 어드바이스와 포인트 컷을 함께 갖고있습니다.  
-**Advice** : 실질적으로 부가기능을 담은 구현체  
-**JoinPoint** : 어드바이스가 적용될 위치입니다. 스프링에서는 메소드 조인포인트만 제공합니다.
-**Point cut** : 부가기능이 적용될 대상을 선정하는 방법  
+**Aspect** : 관심사를 모듈화 한 것으로 어드바이스와 포인트 컷을 포함   
+**Advice** : 실질적으로 부가기능을 담은 구현체    
+**JoinPoint** : 어드바이스가 적용 가능한 위치. 스프링에서는 메소드 조인포인트만 제공   
+**Point cut** : 어떤 대상에게 부가기능을 적용할지 선정하는 방법   
 **Proxy** : 타겟을 감싸서 타겟의 요청을 대신 받아주는 랩핑 오브젝트.   
-**Weaving** : 지정된 객체에 aspect를 적용해서 새로운 프록시 객체를 생성하는 과정  
+**Weaving** : 지정된 객체에 aspect를 적용해서 새로운 프록시 객체를 생성하는 과정     
 
-스프링 AOP는 프록시 패턴 기반으로 합니다. 프록시 패턴은 대신 해준다는 개념으로 이해하면된다. 실제 aop가 적용된 객체의 클래스를 확인해보면 proxy가 붙은 객체로 사용됩니다.  
+스프링 AOP는 프록시 패턴 기반으로 합니다. 
 </details></br>
 
 <details>
@@ -249,9 +249,9 @@ OOP의 경우 비즈니스 로직의 모듈화가 핵심이라면 AOP는 인프�
 스프링 aop는 프록시 패턴의 런타임 위빙 방식을 사용합니다.
 스프링 aop는 JDK Dynamic Proxy, CGLIB 두 가지를 사용합니다.   
 
-**JDK Dynamic Proxy** : Proxy Factory에게 타겟의 인터페이스 정보를 넘겨주면 타겟의 인터페이스를 상속한 Proxy 객체를 생성한다. Proxy 객체에서 invocationHandler를 구현하면되는데,  invoke 메서드를 오버라이딩하면서 부가기능을 구현할 수 있습니다. JDK Dynamic Proxy방식은 Java reflection을 사용해 target class의 method를 invoke하며, Advise대상이든 아니든 모든 method call마다 reflection invoke를 실시하므로 성능이 떨어집니다. JDK Dynamic Proxy방식은 interface가 반드시 필요합니다.
+**JDK Dynamic Proxy** : 인터페이스를 구현한 class에 대해서만 적용이 가능한 방법입니다. JDK Dynamic Proxy방식은 Java reflection을 사용해 target class의 method를 invoke합니다. advise의 적용 대상인지와 상관 없이 모든 method call마다 invoke가 수행되므로 성능이 떨어집니다.
 
-**CGLIB** :  CGLIB는 Enhancer라는 클래스를 바탕으로 프록시를 생성합니다. CGLIB Proxy는 Target Class를 상속받아 생성된다. CGLIB방식은 Interface가 필요하지 않습니다. 하지만 상속을 이용하는 만큼, final, private와 같이 overriding이 불가능한경우 사용할 수 없다. @Transactional, @Cacheable같은 어노테이션을 사용할 때 private이 안되는 이유가 이것 때문이다. methodInterceptor를 구현하면되는데, intercept 메서드를 오버라이딩하면서 부가기능을 구현한다. CGLIB방식은 메서드가 최초 호출될 때만 동적으로 Bytecode를 생성하고 다음 호출부터는 재사용하기 때문에 속도가 더 빠르다.
+**CGLIB** :  CGLIB는 인터페이스의 구현과 상관없이 사용이 가능합니다. CGLIB Proxy는 Target Class를 상속받아 생성되어 별도의 인터페이스가 필요하지 않지만 final, private와 같이 overriding이 불가능한경우 사용할 수 없습니다. CGLIB방식은 Java reflection이 아닌 Bytecode를 조작해 프록시 객체를 만들기 때문에 성능이 더 좋습니다.
 
 Spring에서 타겟 클래스의 인터페이스 구현 여부에 따라 방식이 달라집니다. Spring boot는 이와 상관없이 CGLIB방식이 default입니다.
 </details></br>
