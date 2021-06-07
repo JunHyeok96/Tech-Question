@@ -234,6 +234,17 @@ Spring 컨테이너에서 관리되는 객체를 말합니다. Bean은 xml파일
 
 </details></br>
 
+<details>
+    <summary style="font-size : 20px;"><strong> filter, intercepter차이는 무엇인가요?</strong></summary></br>
+    
+**filter**
+요청이 들어오면 dispatcher servlet에게 도달하기전 등록된 filter가 수행됩니다. doFilter를 사용하여 여러개의 필터를 체이닝 할 수 있습니다. filter는 spring context외부에 존재합니다. 
+
+**intercepter**
+dispatcher servlet이 컨트롤러를 호출하기 전 처리됩니다. interceptor는 spring context내부에 존재하며 요청 전후 preHandler, postHandler를 사용하여 처리가 가능합니다.
+
+
+</details></br>
 
 <details>
     <summary style="font-size : 20px;"><strong>프록시 패턴은 무엇인가요?</strong></summary></br>
