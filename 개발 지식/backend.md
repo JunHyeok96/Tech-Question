@@ -222,6 +222,20 @@ Spring 컨테이너에서 관리되는 객체를 말합니다. Bean은 xml파일
 </details></br>
 
 <details>
+    <summary style="font-size : 20px;"><strong> Spring MVC 동작과정을 설명해주세요.</strong></summary></br>
+    
+1. 클라이언트로부터 요청이 오면 dispatcher servlet에서 가로챕니다.  
+2. dispatcher servlet은 HandlerMapping객체에게 요청URL에 대해 어떤 컨트롤러에서 처리해야할지 정보를 얻어옵니다.  
+3. dispatcher servlet은 HandlerAdapter에게 요청을 위임하여 요청에 맞는 컨트롤러의 메서드를 실행시킵니다.  
+4. 컨트롤러 메서드의 실행 결과를 ModelAndView의 형태로 반환합니다  
+5. dispatcher servlet은 view resolver로 부터 반환 값에 해당하는 view객체를 찾습니다.  
+6. view객체는 해당하는 뷰(html, jsp, thyleaf)를 호출하고 model객체에 담긴 데이터를 가져와 화면에 표시합니다.   
+
+
+</details></br>
+
+
+<details>
     <summary style="font-size : 20px;"><strong>프록시 패턴은 무엇인가요?</strong></summary></br>
 
 프록시 패턴은 클라이언트의 요청을 프록시 객체로 대신 받아주는 방식입니다.
