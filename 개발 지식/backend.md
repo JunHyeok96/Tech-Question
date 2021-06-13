@@ -138,6 +138,13 @@ Lazy모드는 당장 N+1문제가 발생하지 않지만 연관된 관계를 참
 </details></br>
 
 <details>
+    <summary style="font-size : 20px;"><strong> Q. Page api와 fetch join을 같이 사용하면 어떤 문제가 발생하나요?</strong></summary></br>
+    
+ManyToOne과 OneToOne은 테이블을 조인해도 데이터 수가 변하지 않기 떄문에 paging과 fetch join을 같이 사용 할 수 있습니다. 하지만 OneToMany와 ManyToMany는 테이블을 조인하면 데이터 수가 변하기 때문에 jpa에서는 paging을 막아놨습니다. 만약 이런 상황에서 페이징과 페치 조인을 같이 사용한다면 데이터를 가져올 때 db에서 데이터를 잘라서 가져오는 것이 아니라 데이터를 모두 메모리에 올리고 어플리케이션 단에서 페이징을 수행합니다. 
+</details></br>
+
+
+<details>
     <summary style="font-size : 20px;"><strong> Q. 영속성 컨텍스트는 무엇인가요?</strong></summary></br>
     
 영속성 컨텍스트는 엔티티를 영구 저장하는 환경입니다. 엔티티 매니저로 엔티티를 저장하거나 조회하면 영속성 컨텍스트에서 엔티티를 보관하고 저장합니다.
